@@ -1,3 +1,6 @@
+# Mac nastiness
+.DS_Store
+
 # Logs
 logs
 *.log
