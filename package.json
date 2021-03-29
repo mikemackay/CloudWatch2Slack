@@ -1,0 +1,28 @@
+{
+  "name": "cloudwatch2slack",
+  "version": "1.0.0",
+  "description": "Lambda function to push CloudWatch Alarms to Slack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemackay/CloudWatch2Slack.git"
+  },
+  "keywords": [
+    "AWS",
+    "CloudWatch",
+    "Lambda",
+    "Slack"
+  ],
+  "author": "Mike Mackay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikemackay/CloudWatch2Slack/issues"
+  },
+  "homepage": "https://github.com/mikemackay/CloudWatch2Slack#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
