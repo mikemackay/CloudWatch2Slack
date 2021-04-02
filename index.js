@@ -59,13 +59,17 @@ exports.handler = async (event) => {
         headers: {
             'Content-Type': 'application/json'
         }
+    }).then(response => {
+        if(response.data == 'ok') {
+            // Done
+            return {
+                statusCode: 200,
+                body: JSON.stringify('OK'),
+            };
+        }
+    }).catch(err => {
+        console.log(err);
     });
-    
-    // Done
-    return {
-        statusCode: 200,
-        body: JSON.stringify('OK'),
-    };
 };
 
 function getEc2InstanceTags(instanceId) {
