@@ -21,3 +21,5 @@ Below you can see an example screenshot of the script in action, showing an alar
 
 ## Updates / Feature Requests / Bugs
 Feel free to contact me, or utilise native GitHub features to extend the code, or fix something I have missed.
+
+To Do: Update the code to use the new Javascript SDK v3, which should lighten to AWS SDK load.
