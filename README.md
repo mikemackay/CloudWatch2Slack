@@ -2,7 +2,7 @@
  A simple Lambda function built with Node.js [14.x] to push CloudWatch Alarms to Slack, with semi-pretty formatting.
  
  ## Requirements
- While this code should work with any type of CloudWatch notification (a relatively untested theory), this script has been built to work more-specifically with EC2 alerts. When it receives an alarm from CloudWatch that contains an EC2 _"InstanceId"_ dimension, the script retrieves all Tags for the instance in question and displays them in Slack; instead of the default CloudWatch information - as this doesn't generally identify the instance in question (who can identify each workload purely based on the Instance Id?!).
+ While this code should work with any type of CloudWatch notification (a relatively untested theory), this script has been built to work more-specifically with EC2 alerts. When it receives an alarm from CloudWatch that contains an EC2 _"InstanceId"_ dimension, the script retrieves all Tags for the instance in question and displays them in Slack; instead of the default CloudWatch information - as this doesn't generally identify the instance in question in a helpful way (I mean, who can identify each workload purely based on the Instance Id anyway?!).
  
  Because of the EC2 Tags retrieval, this code needs to have an appropriate service role in place. I have supplied a file _"Ec2ReadTagsOnly.json"_ IAM profile that allows Read Only access to EC2 Tags. Feel free to use this one, or create your own - please don't grant overly excessive access to any script that doesn't need it; always work on the principle of Least Privilege access. 
 
