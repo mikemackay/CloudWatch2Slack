@@ -10,7 +10,7 @@
 You are free to determine the right amount of Memory for this Lambda function as necessary, I have not performed in-depth testing to determine which memory allocation works best. Just ensure the aforementioned service role is used for the script, otherwise it will return an unauthorised error.
 
 ## Setup
-Clone this script. Run `npm init` to pull down the Node package libraries (note that the AWS SDK is automatically available via Lambda so we do not need to pull it in locally, although you can if you choose to). Once downloaded, create a zip file with the _index.js_ file and the _node_modules_ folder. Upload to Lambda and that should be all you need.
+Clone this script. Run `npm install` to pull down the Node package libraries (note that the AWS SDK is automatically available via Lambda so we do not need to pull it in locally, although you can if you choose to). Once downloaded, create a zip file with the _index.js_ file and the _node_modules_ folder. Upload to Lambda and that should be all you need.
 
 You will need to create and setup the CloudWatch alarms you need, and then this Lambda script as a subscriber to the event in SNS. CloudWwatch alarms get pushed to SNS, which in turn triggers any subscriptions. You want this Lambda script to be one of them, otherwise you will not get notified.
 
