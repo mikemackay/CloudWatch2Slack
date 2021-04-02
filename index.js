@@ -61,7 +61,11 @@ exports.handler = async (event) => {
         }
     });
     
-    return;
+    // Done
+    return {
+        statusCode: 200,
+        body: JSON.stringify('OK'),
+    };
 };
 
 function getEc2InstanceTags(instanceId) {
