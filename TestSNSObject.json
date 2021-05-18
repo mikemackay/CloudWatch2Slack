@@ -1,0 +1,22 @@
+{
+    "Records": [
+      {
+        "EventSource": "aws:sns",
+        "EventVersion": "1.0",
+        "EventSubscriptionArn": "arn:aws:sns:eu-west-2:{{{accountId}}}:ExampleTopic",
+        "Sns": {
+          "Type": "Notification",
+          "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
+          "TopicArn": "arn:aws:sns:eu-west-2:123456789012:ExampleTopic",
+          "Subject": "ALARM: DiskSpaceAlert in EU (London)",
+          "Message": "{\"AlarmName\":\"DiskSpaceAlert\",\"AlarmDescription\":null,\"AWSAccountId\":\"{{{accountId}}}\",\"NewStateValue\":\"ALARM\",\"NewStateReason\":\"Threshold Crossed: 1 out of the last 1 datapoints [48.40100615232186 (17/05/21 16:29:00)] was greater than the threshold (45.0) (minimum 1 datapoint for OK -> ALARM transition).\",\"StateChangeTime\":\"2021-05-18T16:29:18.824+0000\",\"Region\":\"EU (London)\",\"AlarmArn\":\"arn:aws:cloudwatch:eu-west-2:{{{accountId}}}:alarm:DiskSpaceAlert\",\"OldStateValue\":\"OK\",\"Trigger\":{\"MetricName\":\"disk_used_percent\",\"Namespace\":\"CWAgent\",\"StatisticType\":\"Statistic\",\"Statistic\":\"AVERAGE\",\"Unit\":null,\"Dimensions\":[{\"value\":\"/\",\"name\":\"path\"},{\"value\":\"i-07fe46196d29052d5\",\"name\":\"InstanceId\"},{\"value\":\"ami-0917237b4e71c5759\",\"name\":\"ImageId\"},{\"value\":\"t3a.micro\",\"name\":\"InstanceType\"},{\"value\":\"nvme0n1p1\",\"name\":\"device\"},{\"value\":\"ext4\",\"name\":\"fstype\"}],\"Period\":86400,\"EvaluationPeriods\":1,\"ComparisonOperator\":\"GreaterThanThreshold\",\"Threshold\":45.0,\"TreatMissingData\":\"- TreatMissingData: missing\",\"EvaluateLowSampleCountPercentile\":\"\"}}",
+          "Timestamp": "1970-01-01T00:00:00.000Z",
+          "SignatureVersion": "1",
+          "Signature": "EXAMPLE",
+          "SigningCertUrl": "EXAMPLE",
+          "UnsubscribeUrl": "EXAMPLE",
+          "MessageAttributes": {}
+        }
+      }
+    ]
+  }
