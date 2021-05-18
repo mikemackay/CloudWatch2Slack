@@ -4,6 +4,11 @@
 const aws = require('aws-sdk');
 const axios = require('axios');
 
+let instanceRegions = {
+    'EU (London)': 'eu-west-2',
+    'EU (Ireland)': 'eu-west-1' 
+};
+
 // To get your Slack hook URL, go into Slack admin and create a new "Incoming Webhook" integration
 const slackUrl = process.env.SLACK_POST_URL;
 
@@ -14,13 +19,13 @@ exports.handler = async (event) => {
     
     // Build our Slack POST object, with styling blocks
     var slackMessagePayload = {
-        "text": event.Records[0].Sns.Subject,
+        "text": event.Records[0].Sns.Subject.replace(/["]/g, ""),
         "blocks": [
             {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "*" + event.Records[0].Sns.Subject + "*"
+                    "text": "*" + event.Records[0].Sns.Subject.replace(/["]/g, "") + "*"
                 }
             },
             {
@@ -42,7 +47,7 @@ exports.handler = async (event) => {
     let alertDimensions = snsMessage.Trigger.Dimensions;
     for (var i = 0, len = alertDimensions.length; i < len; i++) {
         if(alertDimensions[i].name == 'InstanceId') {
-            let ec2InstanceTags = await getEc2InstanceTags(alertDimensions[i].value);
+            let ec2InstanceTags = await getEc2InstanceTags(alertDimensions[i].value, snsMessage.Region);
             ec2InstanceTags.Tags.forEach(function(instanceTag) {
                 slackMessagePayload.blocks[1].fields.push(
                     {
@@ -71,8 +76,8 @@ exports.handler = async (event) => {
     });
 };
 
-function getEc2InstanceTags(instanceId) {
-    let ec2 = new aws.EC2();
+function getEc2InstanceTags(instanceId, instanceRegion) {
+    let ec2 = new aws.EC2({region: instanceRegions[instanceRegion]});
     let params = {Filters: [{ Name:"resource-id", Values:[ instanceId ]}]};
     return new Promise((resolve, reject) => {
         let instanceTags = ec2.describeTags(params).promise();
